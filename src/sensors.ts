@@ -1,4 +1,5 @@
-import { C04, C18, C22, C27, C33, SamplingInterval, Sensor, TEST_SENSOR_URL } from './i-face-sensors';
+import { C04, C18, C22, C27, C33, SamplingInterval, Sensor} from './i-face-sensors';
+import { TEST_SENSOR_URL } from './settings';
 
 export const sensors: Sensor[] = [
   {
