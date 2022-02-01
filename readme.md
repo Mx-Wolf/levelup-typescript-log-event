@@ -39,7 +39,7 @@ import fetch from 'node-fetch';
 }
 ```
 
-а в файле package.json, на верхнем уровне укажите, что NodeJs должен исполнять js в стиле стандарта ECMA 
+а в файле package.json, на верхнем уровне укажите, что NodeJs должен исполнять js в стиле стандарта ECMA
 
 ```json
 {
