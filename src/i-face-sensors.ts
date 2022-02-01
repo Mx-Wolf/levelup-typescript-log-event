@@ -18,7 +18,7 @@ export const enum SamplingInterval {
   occasional = 60,
 }
 
-type Temperature = number & { celsius: void };
+export type Temperature = number & { celsius: void };
 export const makeTemperature = (value: number) => value as Temperature;
 /**
  * Температура 4С
