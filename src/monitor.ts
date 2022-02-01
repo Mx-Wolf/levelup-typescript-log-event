@@ -18,7 +18,6 @@ export const beginMonitor = (sensor: Sensor): Promise<void> => new Promise<void>
     };
     sample();
   } catch (err) {
-    global.console.log(err);
     if(typeof id !== 'undefined'){
       clearInterval(id);
     }

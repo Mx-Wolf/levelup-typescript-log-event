@@ -1,6 +1,7 @@
 import { assertArray, assertReading } from './guards';
 import { Dashboard } from './i-face-dashboard';
 import { Sensor, Temperature } from './i-face-sensors';
+import fetch from 'node-fetch';
 
 export const assesReading = (
   reading: Temperature,
@@ -15,7 +16,6 @@ export const assesReading = (
   if (reading > max) {
     return cool();
   }
-  global.console.log(`reading: ${reading} within range [${min}, ${max}]`);
 };
 
 export const getReadings = async (sensor: Pick<Sensor, 'url'>) => {
