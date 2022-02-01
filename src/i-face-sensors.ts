@@ -1,3 +1,7 @@
+export const enum AirConAction {
+  heat = 'heat',
+  cool = 'cool',
+}
 
 export const enum SamplingInterval {
   /**
@@ -14,8 +18,8 @@ export const enum SamplingInterval {
   occasional = 60,
 }
 
-type Temperature = number & {celsius:void};
-export const makeTemperature = (value:number)=> value as Temperature;
+type Temperature = number & { celsius: void };
+export const makeTemperature = (value: number) => value as Temperature;
 /**
  * Температура 4С
  */
@@ -39,8 +43,42 @@ export const C33 = makeTemperature(33);
 
 type Range = [min: Temperature, max: Temperature];
 
-export interface Sensor{
-  name:string;
+export interface Sensor {
+  name: string;
   sampling: SamplingInterval;
-  range:Range;
+  range: Range;
+  url: string;
 }
+
+export interface ControlSignal {
+  name: string;
+  action: AirConAction;
+}
+
+export const TEST_SENSOR_URL = 'http://www.randomnumberapi.com/api/v1.0/random?min=0&max=40&count=1';
+
+export const BASE_SAMPLING_FACTOR = 60 * 1000;
+
+export const getMilliseconds = (sampling: SamplingInterval) => sampling * BASE_SAMPLING_FACTOR;
+
+
+/**
+ * Функция для эмуляции управления системой кондиционирования воздуха умного дома.
+ * Вам следует вызывать эту функцию при обнаружении показаний любого из набора датчиков
+ * выходящими за пределы установленного диапазона.
+ * @param airConSignal сведения для управления системой кондиционирования воздуха
+ * @returns Promise
+ */
+export const sendControlSignal = (
+  airConSignal: ControlSignal,
+) => new Promise<void>(
+  (resolve) => {
+    setTimeout(
+      ()=>{
+        global.console.log(airConSignal);
+        resolve();
+      },
+      0,
+    );
+  },
+);
